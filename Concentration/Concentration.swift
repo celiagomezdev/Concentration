@@ -34,6 +34,7 @@ class Concentration {
     }
     
     init(numberOfPairsOfCards: Int) {
+        cards.removeAll()
         for _ in 1...numberOfPairsOfCards {
             let card = Card()
             cards += [card, card]
@@ -50,4 +51,5 @@ class Concentration {
         
         cards += shuffledCards
     }
+    
 }

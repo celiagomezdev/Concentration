@@ -28,7 +28,7 @@ class ViewController: UIViewController {
             game.chooseCard(at: cardNumber)
             updateViewFromModel()
         } else {
-            print("this button is not properly connected")
+            print("This button is not properly connected")
         }
     }
     
@@ -50,16 +50,28 @@ class ViewController: UIViewController {
     
     var emoji = [Int:String]()
     
+    var emojiChoicesReserve = [String]()
+    
     func emoji(for card: Card) -> String {
+
         if emoji[card.identifier] == nil, emojiChoices.count > 0 {
             let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
-            emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
+            let selectedAndRemovedEmoji = emojiChoices.remove(at: randomIndex)
+            emoji[card.identifier] = selectedAndRemovedEmoji
+            emojiChoicesReserve.append(selectedAndRemovedEmoji)
         }
-        
+
         return emoji[card.identifier] ?? "?"
-        
     }
-
-
+    
+        
+    @IBAction func playAgain(_ sender: UIButton) {
+        emojiChoices += emojiChoicesReserve
+        emojiChoicesReserve.removeAll()
+   
+        game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
+        flipCount = 0
+        updateViewFromModel()
+    }
 }
 
