@@ -11,6 +11,7 @@ import Foundation
 class Concentration {
     
     var cards = [Card]()
+    var flipCount = 0
     
     var indexOfOneAndOnlyFaceUpCard: Int?
     

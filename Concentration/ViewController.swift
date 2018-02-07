@@ -12,18 +12,19 @@ class ViewController: UIViewController {
     
     lazy var game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
     
+    @IBOutlet var cardButtons: [UIButton]!
+    
     var flipCount = 0 {
         didSet {
             flipCountLabel.text = "Flips = \(flipCount)"
         }
     }
     
-    @IBOutlet var cardButtons: [UIButton]!
-    
     @IBOutlet weak var flipCountLabel: UILabel!
     
     @IBAction func touchCard(_ sender: UIButton) {
-        flipCount += 1
+        game.flipCount += 1
+        flipCount = game.flipCount
         if let cardNumber = cardButtons.index(of: sender) {
             game.chooseCard(at: cardNumber)
             updateViewFromModel()
@@ -47,10 +48,9 @@ class ViewController: UIViewController {
     }
     
     var emojiChoices = ["👻", "🎃", "🙀", "🦇", "🍭", "🍬", "🍎", "😈", "😱"]
+    var emojiChoicesReserve = [String]()
     
     var emoji = [Int:String]()
-    
-    var emojiChoicesReserve = [String]()
     
     func emoji(for card: Card) -> String {
 
@@ -67,6 +67,7 @@ class ViewController: UIViewController {
         
     @IBAction func playAgain(_ sender: UIButton) {
         emojiChoices += emojiChoicesReserve
+        emoji.removeAll()
         emojiChoicesReserve.removeAll()
    
         game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
