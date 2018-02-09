@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     lazy var game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
     
     @IBOutlet var cardButtons: [UIButton]!
+    @IBOutlet weak var flipCountLabel: UILabel!
+    @IBOutlet weak var playAgainButton: UIButton!
     
     var flipCount = 0 {
         didSet {
@@ -20,17 +22,15 @@ class ViewController: UIViewController {
         }
     }
    
-    var halloween : [String:Any] = ["emojis" : ["👻", "🎃", "🙀", "🦇", "🍭", "🍬", "🍎", "😈", "😱"], "backgroundColor": #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), "cardColor": #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)]
+    var halloween : [String:Any] = ["emojis" : ["👻", "🎃", "🙀", "🦇", "🍭", "🍬", "🍎", "😈", "😱"], "backgroundColor": #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), "cardColor": #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1), "playAgainButton": #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) ]
     
-    var nature : [String:Any] = ["emojis" : ["🐸", "🐛", "🌸", "🍄", "🌻", "🕷", "🐌", "🌳", "🌹"], "backgroundColor": #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), "cardColor": #colorLiteral(red: 0.4492310882, green: 0.9801079631, blue: 0.474406898, alpha: 1)]
+    var nature : [String:Any] = ["emojis" : ["🐸", "🐛", "🌸", "🍄", "🌻", "🕷", "🐌", "🌳", "🌹"], "backgroundColor": #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), "cardColor": #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1), "playAgainButton": #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) ]
     
-    var party : [String:Any] = ["emojis" : ["🎊", "🎈", "🎉", "🍻", "🍾", "🍸", "🕺", "💃🏻", "🤪"], "backgroundColor": #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), "cardColor": #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)]
+    var party : [String:Any] = ["emojis" : ["🎊", "🎈", "🎉", "🍻", "🍾", "🍸", "🕺", "💃🏻", "🤪"], "backgroundColor": #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), "cardColor": #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1), "playAgainButton": #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1) ]
     
     lazy var themes = [halloween, nature, party]
     
     var selectedTheme: [String:Any]!
-    
-    @IBOutlet weak var flipCountLabel: UILabel!
     
     override func viewDidLoad() {
         selectedTheme = halloween
@@ -82,9 +82,19 @@ class ViewController: UIViewController {
     func selectNewTheme() {
         let randomIndex = Int(arc4random_uniform(UInt32(themes.count)))
         selectedTheme = themes[randomIndex]
+        
         if let backgroundColor = selectedTheme["backgroundColor"] as? UIColor {
             view.backgroundColor = backgroundColor
         }
+        
+        if let playAgainButtonColor = selectedTheme["playAgainButton"] as? UIColor {
+            playAgainButton.setTitleColor(playAgainButtonColor, for: UIControlState.normal)
+        }
+        
+        if let labelTextColor = selectedTheme["cardColor"] as? UIColor {
+            flipCountLabel.textColor = labelTextColor
+        }
+        
         emojiChoices = selectedTheme["emojis"] as! [String]
     }
     
