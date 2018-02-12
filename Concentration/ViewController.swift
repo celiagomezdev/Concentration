@@ -10,18 +10,16 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    lazy var game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
+    private lazy var game = Concentration(numberOfPairsOfCards: numberOfPairsOfCards)
     
-    @IBOutlet var cardButtons: [UIButton]!
-    @IBOutlet weak var flipCountLabel: UILabel!
-    @IBOutlet weak var playAgainButton: UIButton!
-    
-    var flipCount = 0 {
-        didSet {
-            flipCountLabel.text = "Flips = \(flipCount)"
-        }
+    var numberOfPairsOfCards: Int {
+        return (cardButtons.count + 1) / 2
     }
-   
+    
+    @IBOutlet private var cardButtons: [UIButton]!
+    @IBOutlet private weak var flipCountLabel: UILabel!
+    @IBOutlet private weak var playAgainButton: UIButton!
+    
     var halloween : [String:Any] = ["emojis" : ["👻", "🎃", "🙀", "🦇", "🍭", "🍬", "🍎", "😈", "😱"], "backgroundColor": #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), "cardColor": #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1), "playAgainButton": #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) ]
     
     var nature : [String:Any] = ["emojis" : ["🐸", "🐛", "🌸", "🍄", "🌻", "🕷", "🐌", "🌳", "🌹"], "backgroundColor": #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), "cardColor": #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1), "playAgainButton": #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) ]
@@ -39,7 +37,6 @@ class ViewController: UIViewController {
     
     @IBAction func touchCard(_ sender: UIButton) {
         game.flipCount += 1
-        flipCount = game.flipCount
         if let cardNumber = cardButtons.index(of: sender) {
             game.chooseCard(at: cardNumber)
             updateViewFromModel()
@@ -49,6 +46,7 @@ class ViewController: UIViewController {
     }
     
     func updateViewFromModel() {
+        flipCountLabel.text = "Flips = \(game.flipCount)"
         for index in cardButtons.indices {
             let button = cardButtons[index]
             let card = game.cards[index]
@@ -105,7 +103,6 @@ class ViewController: UIViewController {
         selectNewTheme()
    
         game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
-        flipCount = 0
         updateViewFromModel()
     }
 }
