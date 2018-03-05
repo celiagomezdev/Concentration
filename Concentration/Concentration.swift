@@ -11,10 +11,9 @@ import Foundation
 class Concentration {
     
     private(set) var cards = [Card]()
-    private(set) var flipCount = 0
+    var flipCount = 0
     
     private var indexOfOneAndOnlyFaceUpCard: Int? {
-        
         get {
             var foundIndex: Int?
             for index in cards.indices {
@@ -42,7 +41,7 @@ class Concentration {
         assert(cards.indices.contains(index), "Concentration.chooseCard(at: \(index)): choosen index not in the cards")
         if !cards[index].isMatched {
             if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != index {
-                if cards[matchIndex].identifier == cards[index].identifier {
+                if cards[matchIndex] == cards[index] {
                     cards[matchIndex].isMatched = true
                     cards[index].isMatched = true
                 }
@@ -65,12 +64,24 @@ class Concentration {
         var shuffledCards = [Card]()
         
         if cards.count > 0 {
-            let randomIndex = Int(arc4random_uniform(UInt32(cards.count)))
-            let shuffledCard = cards.remove(at: randomIndex)
+            let shuffledCard = cards.remove(at: cards.count.arc4random)
             shuffledCards.append(shuffledCard)
         }
         
         cards += shuffledCards
     }
-    
 }
+
+extension Int {
+    var arc4random: Int {
+        if self > 0 {
+            return Int(arc4random_uniform(UInt32(self)))
+        } else if self < 0 {
+            return -Int(arc4random_uniform(UInt32(abs(self))))
+        } else {
+            return 0
+        }
+    }
+}
+
+
