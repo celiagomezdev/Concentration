@@ -20,22 +20,22 @@ class ViewController: UIViewController {
     @IBOutlet private weak var flipCountLabel: UILabel!
     @IBOutlet private weak var playAgainButton: UIButton!
     
-    var halloween : [String:Any] = ["emojis" : ["👻", "🎃", "🙀", "🦇", "🍭", "🍬", "🍎", "😈", "😱"], "backgroundColor": #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), "cardColor": #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1), "playAgainButton": #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) ]
+    private var halloween : [String:Any] = ["emojis" : ["👻", "🎃", "🙀", "🦇", "🍭", "🍬", "🍎", "😈", "😱"], "backgroundColor": #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), "cardColor": #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1), "playAgainButton": #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) ]
     
-    var nature : [String:Any] = ["emojis" : ["🐸", "🐛", "🌸", "🍄", "🌻", "🕷", "🐌", "🌳", "🌹"], "backgroundColor": #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), "cardColor": #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1), "playAgainButton": #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) ]
+    private var nature : [String:Any] = ["emojis" : ["🐸", "🐛", "🌸", "🍄", "🌻", "🕷", "🐌", "🌳", "🌹"], "backgroundColor": #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), "cardColor": #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1), "playAgainButton": #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) ]
     
-    var party : [String:Any] = ["emojis" : ["🎊", "🎈", "🎉", "🍻", "🍾", "🍸", "🕺", "💃🏻", "🤪"], "backgroundColor": #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), "cardColor": #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1), "playAgainButton": #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1) ]
+    private var party : [String:Any] = ["emojis" : ["🎊", "🎈", "🎉", "🍻", "🍾", "🍸", "🕺", "💃🏻", "🤪"], "backgroundColor": #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), "cardColor": #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1), "playAgainButton": #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1) ]
     
     lazy var themes = [halloween, nature, party]
     
-    var selectedTheme: [String:Any]!
+    private var selectedTheme: [String:Any]!
     
     override func viewDidLoad() {
         selectedTheme = halloween
         view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
     }
     
-    @IBAction func touchCard(_ sender: UIButton) {
+    @IBAction private func touchCard(_ sender: UIButton) {
         game.flipCount += 1
         if let cardNumber = cardButtons.index(of: sender) {
             game.chooseCard(at: cardNumber)
@@ -45,7 +45,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func updateViewFromModel() {
+    private func updateViewFromModel() {
         flipCountLabel.text = "Flips = \(game.flipCount)"
         for index in cardButtons.indices {
             let button = cardButtons[index]
@@ -63,11 +63,11 @@ class ViewController: UIViewController {
         }
     }
     
-    lazy var emojiChoices = selectedTheme["emojis"] as! [String]
+    lazy private var emojiChoices = selectedTheme["emojis"] as! [String]
     
-    var emoji = [Int:String]()
+    private var emoji = [Int:String]()
     
-    func emoji(for card: Card) -> String {
+    private func emoji(for card: Card) -> String {
 
         if emoji[card.identifier] == nil, emojiChoices.count > 0 {
             let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
@@ -77,7 +77,7 @@ class ViewController: UIViewController {
         return emoji[card.identifier] ?? "?"
     }
     
-    func selectNewTheme() {
+    private func selectNewTheme() {
         let randomIndex = Int(arc4random_uniform(UInt32(themes.count)))
         selectedTheme = themes[randomIndex]
         
@@ -97,7 +97,7 @@ class ViewController: UIViewController {
     }
     
         
-    @IBAction func playAgain(_ sender: UIButton) {
+    @IBAction private func playAgain(_ sender: UIButton) {
         emojiChoices.removeAll()
         emoji.removeAll()
         selectNewTheme()
