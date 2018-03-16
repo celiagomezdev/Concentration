@@ -20,14 +20,8 @@ class ConcentrationThemeChooserViewController: UIViewController {
     private var party : [String:Any] = ["emojis" : "🎊🎈🎉🍻🍾🍸🕺💃🏻🤪", "backgroundColor": #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), "cardColor": #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1), "playAgainButton": #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1) ]
     
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+//   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//      if segue
+//    }
 }

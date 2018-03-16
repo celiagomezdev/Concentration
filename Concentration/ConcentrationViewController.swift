@@ -30,8 +30,6 @@ class ConcentrationViewController: UIViewController {
 
     lazy var themes = [halloween, nature, party, faces]
     
-    private var selectedTheme: [String:Any]!
-    
     override func viewDidLoad() {
         selectedTheme = faces
     }
@@ -64,7 +62,15 @@ class ConcentrationViewController: UIViewController {
         }
     }
     
-    lazy private var emojiChoices = selectedTheme["emojis"] as! String
+    private var selectedTheme: [String:Any]! {
+        didSet {
+            emojiChoices = (selectedTheme["emojis"] as? String) ?? ""
+            emoji.removeAll()
+            updateViewFromModel()
+        }
+    }
+    
+    private var emojiChoices: String = ""
     
     private var emoji = [Card:String]()
     
@@ -78,34 +84,26 @@ class ConcentrationViewController: UIViewController {
         return emoji[card] ?? "?"
     }
     
-    private func renewEmojis() {
-        emojiChoices.removeAll()
-        emoji.removeAll()
-        emojiChoices = selectedTheme["emojis"] as! String
+    private func selectNewTheme() {
+        let randomIndex = Int(arc4random_uniform(UInt32(themes.count)))
+        selectedTheme = themes[randomIndex]
+
+        if let backgroundColor = selectedTheme["backgroundColor"] as? UIColor {
+            view.backgroundColor = backgroundColor
+        }
+
+        if let playAgainButtonColor = selectedTheme["playAgainButton"] as? UIColor {
+            playAgainButton.setTitleColor(playAgainButtonColor, for: UIControlState.normal)
+        }
+
+        if let labelTextColor = selectedTheme["cardColor"] as? UIColor {
+            flipCountLabel.textColor = labelTextColor
+        }
     }
-    
-//    private func selectNewTheme() {
-//        let randomIndex = Int(arc4random_uniform(UInt32(themes.count)))
-//        selectedTheme = themes[randomIndex]
-//
-//        if let backgroundColor = selectedTheme["backgroundColor"] as? UIColor {
-//            view.backgroundColor = backgroundColor
-//        }
-//
-//        if let playAgainButtonColor = selectedTheme["playAgainButton"] as? UIColor {
-//            playAgainButton.setTitleColor(playAgainButtonColor, for: UIControlState.normal)
-//        }
-//
-//        if let labelTextColor = selectedTheme["cardColor"] as? UIColor {
-//            flipCountLabel.textColor = labelTextColor
-//        }
-//
-//        emojiChoices = selectedTheme["emojis"] as! String
-//    }
     
         
     @IBAction private func playAgain(_ sender: UIButton) {
-        renewEmojis()
+        selectNewTheme()
         game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
         updateViewFromModel()
     }
