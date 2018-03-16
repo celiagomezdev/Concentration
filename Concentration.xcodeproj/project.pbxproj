@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E2CE91B205C207F00A334E4 /* ConcentrationThemeChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2CE91A205C207F00A334E4 /* ConcentrationThemeChooserViewController.swift */; };
 		7E7569BC202781FD001AE8BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7569BB202781FD001AE8BC /* AppDelegate.swift */; };
 		7E7569BE202781FD001AE8BC /* ConcentrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7569BD202781FD001AE8BC /* ConcentrationViewController.swift */; };
 		7E7569C1202781FD001AE8BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E7569BF202781FD001AE8BC /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7E2CE91A205C207F00A334E4 /* ConcentrationThemeChooserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcentrationThemeChooserViewController.swift; sourceTree = "<group>"; };
 		7E7569B8202781FD001AE8BC /* Concentration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Concentration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E7569BB202781FD001AE8BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E7569BD202781FD001AE8BC /* ConcentrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcentrationViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 			children = (
 				7E7569CE2028B800001AE8BC /* Concentration.swift */,
 				7E7569BD202781FD001AE8BC /* ConcentrationViewController.swift */,
+				7E2CE91A205C207F00A334E4 /* ConcentrationThemeChooserViewController.swift */,
 				7E7569D02028B80B001AE8BC /* Card.swift */,
 				7E7569CD20278224001AE8BC /* Supporting Files */,
 				7E7569BF202781FD001AE8BC /* Main.storyboard */,
@@ -150,6 +153,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E2CE91B205C207F00A334E4 /* ConcentrationThemeChooserViewController.swift in Sources */,
 				7E7569BE202781FD001AE8BC /* ConcentrationViewController.swift in Sources */,
 				7E7569BC202781FD001AE8BC /* AppDelegate.swift in Sources */,
 				7E7569CF2028B800001AE8BC /* Concentration.swift in Sources */,
