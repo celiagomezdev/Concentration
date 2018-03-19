@@ -32,11 +32,12 @@ class ConcentrationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateViewFromModel()
+        if cardButtons != nil {
+            updateViewFromModel()
+        }
     }
     
     private func updateViewFromModel() {
-
         if cardButtons != nil {
             flipCountLabel.text = "Flips = \(game.flipCount)"
             for index in cardButtons.indices {
@@ -52,37 +53,38 @@ class ConcentrationViewController: UIViewController {
                     }
                 }
             }
-        } else {
-            print("cardButtons is nil: \(cardButtons)")
         }
     }
     
-    private func setEmojis() {
+  private func setEmojis() {
         emoji.removeAll()
-        emojiChoices = (selectedTheme["emojis"] as? String) ?? ""
+        emojiChoices = themeEmojis ?? ""
     }
     
-    var selectedTheme: [String:Any]! {
+    var selectedTheme: [String:Any]! = ["emojis" : "🥦🙊🦄🐚🍁🎱🚜✈️💿", "backgroundColor": #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), "cardColor": #colorLiteral(red: 0, green: 0.9810667634, blue: 0.5736914277, alpha: 1), "playAgainButton": #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) ] {
         didSet {
             setEmojis()
+            updateViewFromModel()
         }
     }
     
-    private var emojiChoices: String = ""
+    private lazy var themeEmojis = selectedTheme["emojis"] as? String
+    
+    private lazy var emojiChoices = themeEmojis ?? ""
     
     private var emoji = [Card:String]()
     
     private func emoji(for card: Card) -> String {
-
+        
         if emoji[card] == nil, emojiChoices.count > 0 {
             let randomStringIndex = emojiChoices.index(emojiChoices.startIndex, offsetBy: emojiChoices.count.arc4random)
             emoji[card] = String(emojiChoices.remove(at: randomStringIndex))
         }
-
+        
         return emoji[card] ?? "?"
     }
     
-
+    
     @IBAction private func playAgain(_ sender: UIButton) {
         setEmojis()
         game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)

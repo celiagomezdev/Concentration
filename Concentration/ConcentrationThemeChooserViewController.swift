@@ -9,7 +9,7 @@
 import UIKit
 
 class ConcentrationThemeChooserViewController: UIViewController {
-
+    
     //Themes
     private var faces : [String:Any] = ["emojis" : "😱😳😭😜😘😅😍😎😂", "backgroundColor": #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), "cardColor": #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), "playAgainButton": #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) ]
     
@@ -31,7 +31,7 @@ class ConcentrationThemeChooserViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Choose Theme" {
-            if let button = sender as? UIButton, let theme = themeSelector(button: button) {
+            if let theme = themeSelector(button: sender as! UIButton) {
                 if let cvc = segue.destination as? ConcentrationViewController {
                     cvc.selectedTheme = theme
                 }

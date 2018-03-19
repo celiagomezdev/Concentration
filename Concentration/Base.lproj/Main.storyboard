@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5cl-jo-Ff7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="esG-QW-AEa">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -27,7 +27,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <state key="normal" title="Faces"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="show" identifier="Choose Theme" id="HBA-Z0-e65"/>
+                                            <segue destination="BYZ-38-t0r" kind="showDetail" identifier="Choose Theme" id="Qsw-3A-5rh"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bxk-3C-US0">
@@ -35,7 +35,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <state key="normal" title="Halloween"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="show" identifier="Choose Theme" id="o9S-II-hqd"/>
+                                            <segue destination="BYZ-38-t0r" kind="showDetail" identifier="Choose Theme" id="aSF-DT-Qr7"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JZX-Tm-HXU">
@@ -43,7 +43,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <state key="normal" title="Party"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="show" identifier="Choose Theme" id="Apo-Eu-zJ6"/>
+                                            <segue destination="BYZ-38-t0r" kind="showDetail" identifier="Choose Theme" id="6xp-RR-kkB"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HDX-Fm-CKL">
@@ -51,7 +51,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <state key="normal" title="Nature"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="show" identifier="Choose Theme" id="zFy-h5-as3"/>
+                                            <segue destination="BYZ-38-t0r" kind="showDetail" identifier="Choose Theme" id="Jqg-aU-afQ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -68,7 +68,20 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pjI-Dq-asK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-388" y="135.96059113300493"/>
+            <point key="canvasLocation" x="-567" y="136"/>
+        </scene>
+        <!--Split View Controller-->
+        <scene sceneID="dTi-Ic-Y3e">
+            <objects>
+                <splitViewController id="esG-QW-AEa" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="5cl-jo-Ff7" kind="relationship" relationship="masterViewController" id="bq2-AO-wAp"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="detailViewController" id="Wh2-wZ-A3N"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G57-mm-prK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2082" y="656"/>
         </scene>
         <!--Concentration View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -242,7 +255,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="962.39999999999998" y="135.96059113300493"/>
+            <point key="canvasLocation" x="-937" y="956"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hbZ-p2-7TR">
@@ -264,6 +277,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Apo-Eu-zJ6"/>
+        <segue reference="Qsw-3A-5rh"/>
     </inferredMetricsTieBreakers>
 </document>
