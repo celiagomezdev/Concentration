@@ -19,9 +19,24 @@ class ConcentrationThemeChooserViewController: UIViewController {
     
     private var party : [String:Any] = ["emojis" : "🎊🎈🎉🍻🍾🍸🕺💃🏻🤪", "backgroundColor": #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), "cardColor": #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1), "playAgainButton": #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1) ]
     
-
-
-//   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//      if segue
-//    }
+    func themeSelector(button: UIButton) -> [String: Any]? {
+        switch button.tag {
+        case 0: return faces
+        case 1: return halloween
+        case 2: return party
+        case 3: return nature
+        default: return [:]
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Choose Theme" {
+            if let button = sender as? UIButton, let theme = themeSelector(button: button) {
+                if let cvc = segue.destination as? ConcentrationViewController {
+                    cvc.selectedTheme = theme
+                }
+            }
+        }
+    }
 }
+

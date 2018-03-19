@@ -16,7 +16,6 @@ struct Card: Hashable {
         return lhs.identifier == rhs.identifier
     }
     
-    
     var isFaceUp = false
     var isMatched = false
     private var identifier: Int
