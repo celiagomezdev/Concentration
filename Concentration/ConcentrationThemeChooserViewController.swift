@@ -29,6 +29,21 @@ class ConcentrationThemeChooserViewController: UIViewController {
         }
     }
     
+    @IBAction func chooseTheme(_ sender: Any) {
+        if let cvc = splitDetailConcentrationViewController {
+            if let theme = themeSelector(button: sender as! UIButton) {
+                cvc.selectedTheme = theme
+            }
+        } else {
+            performSegue(withIdentifier: "Choose Theme", sender: sender)
+        }
+    }
+    
+    private var splitDetailConcentrationViewController: ConcentrationViewController? {
+        return splitViewController?.viewControllers.last as? ConcentrationViewController
+    }
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Choose Theme" {
             if let theme = themeSelector(button: sender as! UIButton) {

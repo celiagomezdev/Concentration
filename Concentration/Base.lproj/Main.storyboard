@@ -27,7 +27,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <state key="normal" title="Faces"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="showDetail" identifier="Choose Theme" id="Qsw-3A-5rh"/>
+                                            <action selector="chooseTheme:" destination="M1R-hV-MeT" eventType="touchUpInside" id="cTP-yr-NK7"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bxk-3C-US0">
@@ -35,7 +35,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <state key="normal" title="Halloween"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="showDetail" identifier="Choose Theme" id="aSF-DT-Qr7"/>
+                                            <action selector="chooseTheme:" destination="M1R-hV-MeT" eventType="touchUpInside" id="1fo-hu-oLs"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JZX-Tm-HXU">
@@ -43,7 +43,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <state key="normal" title="Party"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="showDetail" identifier="Choose Theme" id="6xp-RR-kkB"/>
+                                            <action selector="chooseTheme:" destination="M1R-hV-MeT" eventType="touchUpInside" id="VgA-gf-ouC"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HDX-Fm-CKL">
@@ -51,7 +51,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <state key="normal" title="Nature"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="showDetail" identifier="Choose Theme" id="Jqg-aU-afQ"/>
+                                            <action selector="chooseTheme:" destination="M1R-hV-MeT" eventType="touchUpInside" id="Gq2-w1-eUP"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -65,6 +65,9 @@
                         <viewLayoutGuide key="safeArea" id="CuH-pI-PdH"/>
                     </view>
                     <navigationItem key="navigationItem" id="GHS-vX-vXF"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="showDetail" identifier="Choose Theme" id="TMw-Ba-gII"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pjI-Dq-asK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -277,6 +280,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Qsw-3A-5rh"/>
+        <segue reference="TMw-Ba-gII"/>
     </inferredMetricsTieBreakers>
 </document>

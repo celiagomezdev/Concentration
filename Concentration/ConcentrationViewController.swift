@@ -55,12 +55,7 @@ class ConcentrationViewController: UIViewController {
             }
         }
     }
-    
-  private func setEmojis() {
-        emoji.removeAll()
-        emojiChoices = themeEmojis ?? ""
-    }
-    
+
     var selectedTheme: [String:Any]! = ["emojis" : "🥦🙊🦄🐚🍁🎱🚜✈️💿", "backgroundColor": #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), "cardColor": #colorLiteral(red: 0, green: 0.9810667634, blue: 0.5736914277, alpha: 1), "playAgainButton": #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) ] {
         didSet {
             setEmojis()
@@ -68,10 +63,13 @@ class ConcentrationViewController: UIViewController {
         }
     }
     
-    private lazy var themeEmojis = selectedTheme["emojis"] as? String
+    private func setEmojis() {
+        emoji.removeAll()
+        emojiChoices = selectedTheme["emojis"] as? String ?? ""
+    }
     
-    private lazy var emojiChoices = themeEmojis ?? ""
-    
+    private lazy var emojiChoices = selectedTheme["emojis"] as? String ?? ""
+
     private var emoji = [Card:String]()
     
     private func emoji(for card: Card) -> String {
