@@ -67,7 +67,7 @@ class ConcentrationViewController: UIViewController {
         emoji.removeAll()
         emojiChoices = selectedTheme["emojis"] as? String ?? ""
     }
-    
+
     private lazy var emojiChoices = selectedTheme["emojis"] as? String ?? ""
 
     private var emoji = [Card:String]()
