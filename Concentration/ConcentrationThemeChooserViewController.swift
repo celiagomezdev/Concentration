@@ -8,7 +8,11 @@
 
 import UIKit
 
-class ConcentrationThemeChooserViewController: UIViewController, UISplitViewControllerDelegate {
+class ConcentrationThemeChooserViewController: VCLLoggingViewController, UISplitViewControllerDelegate {
+    
+    override var vclLoggingName: String {
+        return "ThemeChooser"
+    }
     
     //Themes
     private var faces : [String:Any] = ["emojis" : "😱😳😭😜😘😅😍😎😂", "backgroundColor": #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), "cardColor": #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), "playAgainButton": #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) ]
@@ -30,6 +34,7 @@ class ConcentrationThemeChooserViewController: UIViewController, UISplitViewCont
     }
     
     override func awakeFromNib() {
+        super.awakeFromNib()
         splitViewController?.delegate = self
     }
     
